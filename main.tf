@@ -8,7 +8,6 @@ variable "server_port" {
   default = 8080
 }
 
-
 resource "aws_launch_configuration" "example" {
   image_id = "ami-0fb653ca2d3203ac1"
   instance_type = "t2.micro"
@@ -24,7 +23,6 @@ resource "aws_launch_configuration" "example" {
   lifecycle {
     create_before_destroy = true
   }
-
 }
 
 resource "aws_autoscaling_group" "example" {
@@ -42,7 +40,6 @@ resource "aws_autoscaling_group" "example" {
     value = "terraform-asg-example"
     propagate_at_launch = true
   }
-
 }
 
 resource "aws_security_group" "instance" {
@@ -145,5 +142,4 @@ resource "aws_lb_listener_rule" "asg" {
 output "alb_dns_name" {
   value = aws_lb.example.dns_name
   description = "The domain name of the load balancer"
-
 }
